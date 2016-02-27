@@ -3,7 +3,6 @@
 import urllib
 import re
 import sys
-import types
 
 
 def ISIP(s):
@@ -15,9 +14,6 @@ def URL(ip):
     fip = uip.read()
     rip = re.compile(r"<br/><b>查询结果：(.*)</b><br/>")
     result = rip.findall(fip)
-    # print result[0]
-    # print result[0].encode('gbk')
-    # print result[0].decode('utf-8')
     print u"%s\t %s" % (ip, result[0].decode('utf-8'))
 
 
@@ -26,7 +22,6 @@ def DO(domain):
     f = url.read()
     r = re.compile(r'&gt; (.*?)<br/><b>查询结果：(.*?)</b><br/>', re.S)
     result = r.findall(f)
-    # print type(result)
     for i in result:
         print u"%s\t %s\t %s\t" % (domain, i[0], i[1].decode('utf-8'))
 
